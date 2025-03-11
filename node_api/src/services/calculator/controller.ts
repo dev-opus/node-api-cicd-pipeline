@@ -8,5 +8,5 @@ IPCalculator.openapi(Routes.evaluateAddress, (c) => {
   const payload = c.req.valid('json');
   const data = Service.evaluateAddress(payload);
 
-  return c.json({ ok: true, message: 'successful', data }, 200);
+  return c.json({ ok: true, message: 'Request successful', data }, 200);
 });
