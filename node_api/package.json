@@ -1,0 +1,26 @@
+{
+  "name": "node_api",
+  "type": "module",
+  "scripts": {
+    "test": "vitest",
+    "start": "node dist/index.js",
+    "dev": "tsx watch src/index.ts",
+    "build": "npx tsup --format esm src"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.13.8",
+    "@hono/zod-openapi": "^0.19.2",
+    "@scalar/hono-api-reference": "^0.5.184",
+    "dotenv": "^16.4.7",
+    "hono": "^4.7.4",
+    "winston": "^3.17.0",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.17",
+    "tsup": "^8.4.0",
+    "tsx": "^4.7.1",
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.8"
+  }
+}
