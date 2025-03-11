@@ -1,16 +1,16 @@
 export class CalculatorUtility {
   /**
    *
-   * @description Compute a network ID from a given IP address and subnet mask
+   * @description Compute a network ID from a given IP host and subnet mask
    *
    */
-  computeNetwork(address: string, subnet: string) {
+  computeNetwork(host: string, subnet: string) {
     const subnetParts = subnet.split('.');
-    const addressParts = address.split('.');
+    const hostParts = host.split('.');
 
     const networkParts: string[] = [];
 
-    addressParts.forEach((part, index) => {
+    hostParts.forEach((part, index) => {
       const networkPart = Number(part) & Number(subnetParts[index]);
       networkParts.push(networkPart.toString());
     });
