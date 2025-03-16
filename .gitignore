@@ -2,3 +2,4 @@ node_api/logs
 node_api/.env
 node_api/dist
 node_api/node_modules
+logs
