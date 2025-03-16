@@ -1,0 +1,40 @@
+services:
+  web:
+    image: webserver
+    build:
+      context: ./nginx
+    ports:
+      - 80:80
+    networks:
+      - webserver
+    depends_on:
+      - instance1
+      - instance2
+    container_name: webserver
+  instance1:
+    image: subnet_calculator
+    build:
+      context: ./node_api
+    env_file:
+      - ./node_api/.env
+    volumes:
+      - ./logs:/app/logs:rw
+    networks:
+      - webserver
+    user: '1001:1001'
+    container_name: instance1
+  instance2:
+    image: subnet_calculator
+    build:
+      context: ./node_api
+    env_file:
+      - ./node_api/.env
+    volumes:
+      - ./logs:/app/logs:rw
+    networks:
+      - webserver
+    user: '1001:1001'
+    container_name: instance2
+
+networks:
+  webserver:
