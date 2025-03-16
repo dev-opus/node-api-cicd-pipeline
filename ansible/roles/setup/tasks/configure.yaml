@@ -1,0 +1,20 @@
+- name: Add user to Docker group
+  ansible.builtin.user:
+    groups:
+      - docker
+    append: true
+    name: '{{ ansible_user }}'
+
+- name: Create 'nodejs' group with GID 1001
+  ansible.builtin.group:
+    name: nodejs
+    gid: 1001
+
+- name: Create no-login user 'hono' with UID 1001
+  ansible.builtin.user:
+    name: hono
+    uid: 1001
+    groups:
+      - nodejs
+    append: false
+    shell: /usr/sbin/nologin

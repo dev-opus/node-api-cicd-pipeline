@@ -1,0 +1,6 @@
+- name: Ensure Dcoker is started
+  ansible.builtin.systemd:
+    name: docker
+    state: started
+    enabled: true
+  notify: Restart Docker service
