@@ -1,0 +1,7 @@
+- name: Configure EC2 as a Web Server with Nginx and Docker -- setup
+  hosts: all
+  become: true
+  become_method: ansible.builtin.sudo
+
+  roles:
+    - setup
