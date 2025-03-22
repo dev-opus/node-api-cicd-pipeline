@@ -1,16 +1,16 @@
 - name: Install required dependencies
   ansible.builtin.apt:
-    name: '{{ docker_deps }}'
+    name: '{{ setup_docker_deps }}'
     update_cache: true
 
 - name: Add Docker's official GPG key
   ansible.builtin.shell: |
     install -m 0755 -d /etc/apt/keyrings
-    curl -fsSL {{ docker_gpg_key }} -o {{ docker_keyring_path }}
-    chmod a+r {{ docker_keyring_path }}
+    curl -fsSL {{ setup_docker_gpg_key }} -o {{ setup_docker_keyring_path }}
+    chmod a+r {{ setup_docker_keyring_path }}
   args:
     executable: /bin/bash
-    creates: '{{ docker_keyring_path }}'
+    creates: '{{ setup_docker_keyring_path }}'
 
 - name: Copy Docker's repository setup
   ansible.builtin.copy:
@@ -26,5 +26,5 @@
 
 - name: Install Docker packages
   ansible.builtin.apt:
-    name: '{{ docker_packages }}'
+    name: '{{ setup_docker_packages }}'
     update_cache: true

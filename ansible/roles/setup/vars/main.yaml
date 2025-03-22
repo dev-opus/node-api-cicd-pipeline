@@ -1,8 +1,16 @@
-- name: Install Docker
-  ansible.builtin.import_tasks: install.yaml
+---
+setup_docker_repo: 'https://download.docker.com/linux/ubuntu'
+setup_docker_gpg_key: 'https://download.docker.com/linux/ubuntu/gpg'
+setup_docker_keyring_path: '/etc/apt/keyrings/docker.asc'
 
-- name: Configure Docker
-  ansible.builtin.import_tasks: configure.yaml
+setup_docker_deps:
+  - curl
+  - ca-certificates
+  - gnupg
 
-- name: Manage Docker Service
-  ansible.builtin.import_tasks: service.yaml
+setup_docker_packages:
+  - docker-ce
+  - docker-ce-cli
+  - containerd.io
+  - docker-buildx-plugin
+  - docker-compose-plugin
