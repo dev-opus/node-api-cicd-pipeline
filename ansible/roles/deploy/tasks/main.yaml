@@ -1,0 +1,5 @@
+- name: Configure
+  ansible.builtin.import_tasks: configure.yaml
+
+- name: Run containers
+  ansible.builtin.import_tasks: run.yaml

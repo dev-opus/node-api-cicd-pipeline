@@ -1,0 +1,36 @@
+- name: Create server directory
+  ansible.builtin.file:
+    path: '/opt/server'
+    state: directory
+    group: 'ubuntu'
+    mode: '0770'
+
+- name: Create logs directory and setup proper ownership
+  ansible.builtin.file:
+    path: '/opt/server/logs'
+    state: directory
+    group: 'nodejs'
+    owner: 'hono'
+    mode: '0770'
+
+- name: Copy node.js artefacts
+  ansible.posix.synchronize:
+    src: '{{ playbook_dir }}/../node_api'
+    dest: '/opt/server'
+    rsync_opts:
+      - '--exclude=README.md'
+      - '--exclude=test'
+      - '--exclude=node_modules'
+
+- name: Copy nginx artefacts
+  ansible.posix.synchronize:
+    src: '{{ playbook_dir }}/../nginx'
+    dest: '/opt/server'
+    rsync_opts:
+      - '--exclude=README.md'
+
+- name: Copy compose file
+  ansible.builtin.copy:
+    src: '{{ playbook_dir }}/../compose.yaml'
+    dest: '/opt/server/compose.yaml'
+    mode: '0750'

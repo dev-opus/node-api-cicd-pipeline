@@ -1,0 +1,23 @@
+---
+galaxy_info:
+  author: Victor Orlunda
+  description: Upload and run node.js code and nginx reverse-proxy using Docker Compose v2
+  license: MIT
+  min_ansible_version: '2.18.1'
+  platforms:
+    - name: Ubuntu
+      versions:
+        - 'noble'
+        - 'jammy'
+        - 'focal'
+        # - 'oracular' for some reason, ansible-lint flags this version
+
+  galaxy_tags:
+    - docker
+    - nodejs
+    - devops
+    - automation
+    - cicd
+    - githubactions
+
+dependencies: []

@@ -1,0 +1,4 @@
+deploy_exclude_list:
+  - 'README.md'
+  - 'node_modules'
+  - 'test'
