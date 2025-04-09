@@ -20,15 +20,15 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: ./node_api
+        working-directory: node_api
 
       - name: Build the project
         run: npm run build
-        working-directory: ./node_api
+        working-directory: node_api
 
       - name: Run tests
         run: npm test
-        working-directory: ./node_api
+        working-directory: node_api
 
   deploy:
     runs-on: ubuntu-latest
@@ -44,7 +44,7 @@ jobs:
         run: |
           SERVER_IP=$(awk 'NR > 1 {print $1}' < inventory.ini)
           ssh-keyscan -H $SERVER_IP >> ~/.ssh/known_hosts
-        working-directory: ./ansible
+        working-directory: ansible
 
       - name: Setup Python
         uses: actions/setup-python@v2
@@ -58,4 +58,4 @@ jobs:
 
       - name: Run Ansible Playbook
         run: ansible-playbook -i inventory.ini deploy.yaml
-        working-directory: ./ansible
+        working-directory: ansible
