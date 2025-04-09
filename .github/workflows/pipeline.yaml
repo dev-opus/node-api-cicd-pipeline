@@ -42,8 +42,9 @@ jobs:
 
       - name: Add Server IP to known hosts
         run: |
-          SERVER_IP=$(awk 'NR > 1 {print $1}' < ../ansible/inventory.ini)
+          SERVER_IP=$(awk 'NR > 1 {print $1}' < inventory.ini)
           ssh-keyscan -H $SERVER_IP >> ~/.ssh/known_hosts
+        working-directory: ./ansible
 
       - name: Setup Python
         uses: actions/setup-python@v2
