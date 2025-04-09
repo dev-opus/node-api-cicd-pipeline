@@ -2,5 +2,6 @@
   "ansible.python.interpreterPath": "/bin/python3",
   "yaml.schemas": {
     "https://json.schemastore.org/github-workflow.json": "file:///home/scruff/Coding/learnings/practice/mix/subnet_calculator/.github/workflows/pipeline.yaml"
-  }
+  },
+  "ansible.lightspeed.enabled": false
 }
